@@ -1,0 +1,18 @@
+x=c(1,2,3,4,5,6,7,8,9,10)
+y=c(6,8,12,14,18,20,22,24,26,28)
+xsq=x^2
+xcub=x^3
+plot(x,y)
+fit1=lm(y~x)
+abline(fit1, col='red')
+fit2=lm(y~x+xsq)
+xv=seq(min(x),max(x),0.01)
+yv=predict(fit2, list(x=xv,xsq=xv^2))
+lines(xv,yv,col='blue')
+fit3=lm(y~x+xsq+xcub)
+xx=seq(min(x),max(x),0.01)
+yy=predict(fit3, list(x=xx, xsq=xx^2, xcub=xx^3))
+lines(xx,yy,col='green')
+summary(fit1)
+summary(fit2)
+summary(fit3)
